@@ -35,22 +35,12 @@ class Program
 
             // Обрабатываем выбор пользователя
             bool resultinput = int.TryParse(Console.ReadLine(), out int result);
-            if (resultinput == false)
-            {
-                while (!resultinput || result <= 0 || result >= 4)
+            while (!resultinput || result <= 0 || result >= 4)
                 {
                     Console.Write("Данные некорретны. Введите числовое значение от 1 до 3: ");
                     resultinput = int.TryParse(Console.ReadLine(), out result);
                 }
-            }
-            else
-            {
-                while (!resultinput || result <= 0 || result >= 4)
-                {
-                    Console.Write("Данные некорретны. Введите число от 1 до 3: ");
-                    resultinput = int.TryParse(Console.ReadLine(), out result);
-                }
-            }
+            
             if (result == 3)
             {
                 break;
@@ -63,19 +53,15 @@ class Program
                     Todo.Add(new_task);
                     Console.WriteLine("Задача добавлена");
                     break;
+
                 case 2: Console.Write("Введите номер задачи для удаления: "); 
                     bool elementToRemove = int.TryParse(Console.ReadLine(), out int number);
-                    if (elementToRemove == false)
-                    {
-                        while (!elementToRemove)
+                    while (!elementToRemove)
                         {
                             Console.Write("Данные некорретны. Введите числовое значение задачи для удаления: ");
                             elementToRemove = int.TryParse(Console.ReadLine(), out number);
                         }
-                    }
-                    else
-                    {
-                        if (number >= 1 && number <= Todo.Count)
+                    if (number >= 1 && number <= Todo.Count)
                         {
                             // Удаляем элемент по указанному индексу
                             Todo.RemoveAt(number - 1);
@@ -85,7 +71,6 @@ class Program
                         {
                             Console.WriteLine("Задача с указанным номером не найдена");
                         }                      
-                    }
                     break;
             }
         }
